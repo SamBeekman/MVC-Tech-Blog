@@ -4,17 +4,17 @@ const router = require('express').Router();
 const apiRoutes = require('./api');
 router.use('/api', apiRoutes);
 
-//frontend call
+//frontend 
 const homeRoutes = require('./home-routes');
 router.use('/', homeRoutes);
 
-//login page
-const loginRoutes = require('./login-routes');
-router.use('/login', loginRoutes);
+// //login page
+// const loginRoutes = require('./login-routes');
+// router.use('/login', loginRoutes);
 
-//dashboard page
-const dashboardRoutes = require('./dashboard-routes');
-router.use('/dashboard', dashboardRoutes);
+// //dashboard page
+// const dashboardRoutes = require('./dashboard-routes');
+// router.use('/dashboard', dashboardRoutes);
 
 
 module.exports = router;
