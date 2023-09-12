@@ -1,0 +1,12 @@
+<!-- Loop over each object in the projects array -->
+{{#each posts as |post| }}
+<div>
+    <div>
+        <a href="/post/{{post.id}}">
+            <p> {{post.post_title}} Created by {{post.user.username}} on {{formatTimestamp post.createdAt}}
+            </p>
+        </a>
+        <p>{{post.description}}</p>
+    </div>
+</div>
+{{/each}}

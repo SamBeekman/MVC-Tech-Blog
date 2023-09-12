@@ -8,6 +8,9 @@ const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+// Import model to sync table with database
+const Models = require('./models/index');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 

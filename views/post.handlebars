@@ -1,0 +1,31 @@
+{{log .}}
+<p>Title: {{singlePost.post_title}}</p>
+<p>Contents: {{singlePost.description}}</p>
+<p>Created By: {{singlePost.user.username}}</p>
+<p>Created On: {{formatTimestamp singlePost.createdAt}}</p>
+
+
+<form id="myForm">
+    <!-- Other form inputs -->
+    <label for="comment">Leave a Comment:</label><br>
+    <input type="text" id="comment" name="comment"><br>
+    {{#if loggedIn}}
+    <button type="submit" id="submit-button">Submit</button>
+    {{else}}
+    <a href="/login">Login to Submit a Comment</a>
+    {{/if}}
+</form>
+
+
+<p id="submittedComments">Comments: </p>
+
+
+<script src="./utils/submit-form.js"></script>
+
+{{!-- on submit
+
+save comment to database
+refresh page
+display page with comment appended including poster details
+
+ --}}
