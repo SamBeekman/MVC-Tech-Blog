@@ -33,7 +33,27 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', async (req, res) => {
     try {
         if (req.session.loggedIn) {
-            res.render('dashboard', { loggedIn: req.session.loggedIn });
+
+            const userPosts = await Post.findAll({
+                include: [
+                    {
+                        model: User,
+                        // attributes: ['username'],
+                        attributes: ['id'],
+                    },
+                ],
+                where:
+                {
+                    id: req.session.userId
+                },
+                raw: true,
+                nest: true
+            });
+
+
+
+
+            res.render('dashboard', { loggedIn: req.session.loggedIn, userPosts });
             return;
         }
         res.redirect('/login');

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -8,10 +8,12 @@ router.post('/', async (req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
+
         });
 
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.userId = dbUserData.id;
 
             res.status(200).json(dbUserData);
         });
@@ -48,6 +50,7 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
+            req.session.userId = dbUserData.id;
             console.log(req.session.cookie);
 
             res
@@ -68,6 +71,42 @@ router.post('/logout', (req, res) => {
         });
     } else {
         res.status(404).end();
+    }
+});
+
+
+// Create Post
+
+router.post('/userpost', async (req, res) => {
+    try {
+
+        const userPost = await Post.create({
+            post_title: req.body.post_title,
+            description: req.body.description,
+            // user_id:
+        })
+
+    } catch {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+
+// Create comment
+
+router.post('/usercomment', async (req, res) => {
+    try {
+
+        const userPost = await Comment.create({
+            description: req.body.description,
+            // user_id:
+            // post_id:
+        })
+
+    } catch {
+        console.log(err);
+        res.status(500).json(err);
     }
 });
 
