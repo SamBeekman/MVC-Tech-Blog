@@ -32,7 +32,7 @@ To see the magic, first install packages with 'npm i', then log into mysql in th
 
 
 
-Link to Heroku: 
+Link to Heroku: https://gentle-river-06226-8e8e00153931.herokuapp.com/
 
 ## Contributing
 
